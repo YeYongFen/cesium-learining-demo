@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+ 
+         113.324064 ,  23.111822
+
+         
+        ]
+      },
+      "properties": {
+        "title": "3",
+        "marker-symbol": "3",
+        "marker-color": "#34BE96"
+      }
+    }
+  ]
+}

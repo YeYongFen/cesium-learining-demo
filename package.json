@@ -4,11 +4,12 @@
   "description": "cesium demo，cesium 研究过程中资料整理，包括：   1、示例，提供常规的cesium示例以及综合性的业务示例   2、工具，整理研究过程中写的一些数据获取、处理、分析的工具，例如网络3dtiles数据爬虫工具   3、插件，根据研究过程中cesium感觉使用不方便的地方，添加插件，包括针对显示控件的汉化中文语言插件等",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "node build-watch.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.6"
+    "ejs": "^3.1.6",
+    "serve": "^12.0.1"
   }
 }

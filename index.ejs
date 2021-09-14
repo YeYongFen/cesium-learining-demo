@@ -301,7 +301,7 @@
 <body onhashchange="hashChanged(event)" onmouseup="mouseDownEvent(event)">
     <div class="nav">
         <a href = "./index.html">
-            <img class="logo" src="https://cesiumjs.org/favicon.ico" />
+            <!-- <img class="logo" src="https://cesiumjs.org/favicon.ico" /> -->
             <div class="title">
                 Cesium Demo
             </div>
@@ -350,8 +350,8 @@
     <div class="right">
         <iframe id ="web_loader" src=""></iframe>
         <ul id = "list_loader">
-            <% itemList.forEach(function(item){%>
-                <% if (item.isDir) { %>
+            <% itemList.forEach(function(item){%>     
+                <% if (item.isDir) {   %>
                     <li>
                         <a name="base"> </a>
                         <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;<%=item.title  %></h3>
@@ -361,7 +361,7 @@
                                 <% item.childrenList.forEach(function(it){%>
                                     <a name="<%=it.pathTag  %>"> </a>
                                     <div class="cart">
-                                        <a href ="<%=it.path  %>" target="_blank">
+                                        <a href ="<%=it.path  %>"  >
                                             <span class="des"><%=it.title  %></span>
                                             <img class="img" src="<%=it.pic  %>" >
                                         </a>
@@ -505,8 +505,7 @@
         panel.style.width = width+"px";
         right.style.left=width+"px";
         right.style.width="calc( 100% - "+width+"px )";
-        debugger;
-        //设置菜单按钮
+         //设置菜单按钮
         expendMenu.style.transform = rotate;
         expendMenu.style["transition-duration"] = "0.5s";
     }

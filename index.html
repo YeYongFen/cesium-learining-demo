@@ -301,7 +301,7 @@
 <body onhashchange="hashChanged(event)" onmouseup="mouseDownEvent(event)">
     <div class="nav">
         <a href = "./index.html">
-            <img class="logo" src="https://cesiumjs.org/favicon.ico" />
+            <!-- <img class="logo" src="https://cesiumjs.org/favicon.ico" /> -->
             <div class="title">
                 Cesium Demo
             </div>
@@ -321,7 +321,7 @@
                         <div class="menu_item" onclick="toggoleSildMenu(event)">
                             <a href= "#model">
                                 <span class="fa fa-plane icon"></span>
-                                <span>base</span>
+                                <span>Hello World</span>
                                 <span class="fa fa-angle-down pull-right"></span>
                             </a>
                         </div>
@@ -330,17 +330,131 @@
                             <ul class="sub_container">
                                 
                                     <li class="sub_menu" onclick="sildMenuItemClick(event)">
-                                        <a href="#base-load_cesium" class ="route"><span>例子一</span></a>
+                                        <a href="#Hello World-load_cesium" class ="route"><span>最简单的例子</span></a>
                                     </li>
  
                                 
                                     <li class="sub_menu" onclick="sildMenuItemClick(event)">
-                                        <a href="#base-load_cesium2" class ="route"><span>load_cesium2.html</span></a>
+                                        <a href="#Hello World-load_cesium2" class ="route"><span>去除所有控件</span></a>
                                     </li>
  
                                 
                                     <li class="sub_menu" onclick="sildMenuItemClick(event)">
-                                        <a href="#base-load_cesium3" class ="route"><span>load_cesium3.html</span></a>
+                                        <a href="#Hello World-load_cesium3" class ="route"><span>工具栏设置</span></a>
+                                    </li>
+ 
+                                
+                            </ul>
+
+                        
+                    </li>
+
+                
+
+
+            
+
+                
+                    <li class="root_menu">
+                        <div class="menu_item" onclick="toggoleSildMenu(event)">
+                            <a href= "#model">
+                                <span class="fa fa-plane icon"></span>
+                                <span>影像服务</span>
+                                <span class="fa fa-angle-down pull-right"></span>
+                            </a>
+                        </div>
+                        
+                        
+                            <ul class="sub_container">
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#影像服务-bing_map" class ="route"><span>Bing地图影像</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#影像服务-singleTileImageryProvider_map" class ="route"><span>图片作为影像</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#影像服务-wms_map" class ="route"><span>WMS</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#影像服务-WMTSTiles_map" class ="route"><span>WMTS服务</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#影像服务-xyzTiles_map" class ="route"><span>XYZ瓦片地图</span></a>
+                                    </li>
+ 
+                                
+                            </ul>
+
+                        
+                    </li>
+
+                
+
+
+            
+
+                
+                    <li class="root_menu">
+                        <div class="menu_item" onclick="toggoleSildMenu(event)">
+                            <a href= "#model">
+                                <span class="fa fa-plane icon"></span>
+                                <span>相机</span>
+                                <span class="fa fa-angle-down pull-right"></span>
+                            </a>
+                        </div>
+                        
+                        
+                            <ul class="sub_container">
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#相机-locateToPoint" class ="route"><span>视图定位</span></a>
+                                    </li>
+ 
+                                
+                            </ul>
+
+                        
+                    </li>
+
+                
+
+
+            
+
+                
+                    <li class="root_menu">
+                        <div class="menu_item" onclick="toggoleSildMenu(event)">
+                            <a href= "#model">
+                                <span class="fa fa-plane icon"></span>
+                                <span>矢量数据</span>
+                                <span class="fa fa-angle-down pull-right"></span>
+                            </a>
+                        </div>
+                        
+                        
+                            <ul class="sub_container">
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#矢量数据-load_geojson copy 2" class ="route"><span>HelloWorld</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#矢量数据-load_geojson copy" class ="route"><span>HelloWorld2</span></a>
+                                    </li>
+ 
+                                
+                                    <li class="sub_menu" onclick="sildMenuItemClick(event)">
+                                        <a href="#矢量数据-load_geojson" class ="route"><span>加载GEOJSON</span></a>
                                     </li>
  
                                 
@@ -360,38 +474,164 @@
     <div class="right">
         <iframe id ="web_loader" src=""></iframe>
         <ul id = "list_loader">
-            
+                 
                 
                     <li>
                         <a name="base"> </a>
-                        <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;base</h3>
+                        <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;Hello World</h3>
                         
                             <div class ="content">
 
                                 
-                                    <a name="base-load_cesium"> </a>
+                                    <a name="Hello World-load_cesium"> </a>
                                     <div class="cart">
-                                        <a href ="./index.html#base-load_cesium?type=1" target="_blank">
-                                            <span class="des">例子一</span>
-                                            <img class="img" src="assets/thumb/no_controller.png" >
+                                        <a href ="./index.html#Hello World-load_cesium?type=1"  >
+                                            <span class="des">最简单的例子</span>
+                                            <img class="img" src="assets/images/cover.png" >
                                         </a>
                                     </div>
 
                                 
-                                    <a name="base-load_cesium2"> </a>
+                                    <a name="Hello World-load_cesium2"> </a>
                                     <div class="cart">
-                                        <a href ="./index.html#base-load_cesium2?type=1" target="_blank">
-                                            <span class="des">load_cesium2.html</span>
-                                            <img class="img" src="" >
+                                        <a href ="./index.html#Hello World-load_cesium2?type=1"  >
+                                            <span class="des">去除所有控件</span>
+                                            <img class="img" src="assets/images/cover.png" >
                                         </a>
                                     </div>
 
                                 
-                                    <a name="base-load_cesium3"> </a>
+                                    <a name="Hello World-load_cesium3"> </a>
                                     <div class="cart">
-                                        <a href ="./index.html#base-load_cesium3?type=1" target="_blank">
-                                            <span class="des">load_cesium3.html</span>
-                                            <img class="img" src="" >
+                                        <a href ="./index.html#Hello World-load_cesium3?type=1"  >
+                                            <span class="des">工具栏设置</span>
+                                            <img class="img" src="assets/images/cover.png" >
+                                        </a>
+                                    </div>
+
+                                
+    
+                            </div>
+
+                        
+                    </li>
+                
+                 
+                
+                    <li>
+                        <a name="base"> </a>
+                        <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;影像服务</h3>
+                        
+                            <div class ="content">
+
+                                
+                                    <a name="影像服务-bing_map"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#影像服务-bing_map?type=1"  >
+                                            <span class="des">Bing地图影像</span>
+                                            <img class="img" src="assets/images/xyzTiles_map.jpg" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="影像服务-singleTileImageryProvider_map"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#影像服务-singleTileImageryProvider_map?type=1"  >
+                                            <span class="des">图片作为影像</span>
+                                            <img class="img" src="assets/images/singleTileImageryProvider_map.jpg" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="影像服务-wms_map"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#影像服务-wms_map?type=1"  >
+                                            <span class="des">WMS</span>
+                                            <img class="img" src="assets/images/cover.png" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="影像服务-WMTSTiles_map"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#影像服务-WMTSTiles_map?type=1"  >
+                                            <span class="des">WMTS服务</span>
+                                            <img class="img" src="assets/images/cover.png" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="影像服务-xyzTiles_map"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#影像服务-xyzTiles_map?type=1"  >
+                                            <span class="des">XYZ瓦片地图</span>
+                                            <img class="img" src="assets/images/xyzTiles_map.jpg" >
+                                        </a>
+                                    </div>
+
+                                
+    
+                            </div>
+
+                        
+                    </li>
+                
+                 
+                
+                    <li>
+                        <a name="base"> </a>
+                        <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;相机</h3>
+                        
+                            <div class ="content">
+
+                                
+                                    <a name="相机-locateToPoint"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#相机-locateToPoint?type=1"  >
+                                            <span class="des">视图定位</span>
+                                            <img class="img" src="assets/images/load_geojson.jpg" >
+                                        </a>
+                                    </div>
+
+                                
+    
+                            </div>
+
+                        
+                    </li>
+                
+                 
+                
+                    <li>
+                        <a name="base"> </a>
+                        <h3 class="title"><i class="fa fa-building"></i>&nbsp;&nbsp;矢量数据</h3>
+                        
+                            <div class ="content">
+
+                                
+                                    <a name="矢量数据-load_geojson copy 2"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#矢量数据-load_geojson copy 2?type=1"  >
+                                            <span class="des">HelloWorld</span>
+                                            <img class="img" src="assets/images/cover.png" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="矢量数据-load_geojson copy"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#矢量数据-load_geojson copy?type=1"  >
+                                            <span class="des">HelloWorld2</span>
+                                            <img class="img" src="assets/images/cover.png" >
+                                        </a>
+                                    </div>
+
+                                
+                                    <a name="矢量数据-load_geojson"> </a>
+                                    <div class="cart">
+                                        <a href ="./index.html#矢量数据-load_geojson?type=1"  >
+                                            <span class="des">加载GEOJSON</span>
+                                            <img class="img" src="assets/images/load_geojson.jpg" >
                                         </a>
                                     </div>
 
@@ -533,8 +773,7 @@
         panel.style.width = width+"px";
         right.style.left=width+"px";
         right.style.width="calc( 100% - "+width+"px )";
-        debugger;
-        //设置菜单按钮
+         //设置菜单按钮
         expendMenu.style.transform = rotate;
         expendMenu.style["transition-duration"] = "0.5s";
     }

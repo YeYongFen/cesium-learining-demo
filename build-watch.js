@@ -24,7 +24,6 @@ fs.watchFile('index.ejs',  function(curr, prev) {
 
 
 fs.watch('views', {
-
     recursive:true
 } , debounce (function(curr, prev) {
     readFilesTree()
@@ -33,6 +32,12 @@ fs.watch('views', {
 
 
 
+fs.watch('assets/images', {
+    recursive:true
+} , debounce (function(curr, prev) {
+    readFilesTree()
+    console.log(' images 有修改');
+} , 500));
 
 
 const server = http.createServer((request, response) => {

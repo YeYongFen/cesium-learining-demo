@@ -1,0 +1,72 @@
+
+ 
+
+    
+<!--tag
+ 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <script src="/assets/Cesium/Cesium.js"></script>
+    
+
+    <style>
+            html,body
+            {
+                width:100%;
+                height:100%;
+                padding:0;
+                margin:0
+            }
+        </style>
+</head>
+<body style="margin: 0px">
+    <div id = "cesiumContainer" style="width:100%;height:100%;margin: 0px">
+    </div>
+    <script>
+        var viewer = new Cesium.Viewer("cesiumContainer", {
+          animation: false, // 动画小组件
+          baseLayerPicker: false, // 底图组件，选择三维数字地球的底图（imagery and terrain）。
+          fullscreenButton: false, // 全屏组件
+          vrButton: false, // VR模式
+          geocoder: false, // 地理编码（搜索）组件
+          homeButton: false, // 首页，点击之后将视图跳转到默认视角
+          infoBox: false, // 信息框
+          sceneModePicker: false, // 场景模式，切换2D、3D 和 Columbus View (CV) 模式。
+          selectionIndicator: false, //是否显示选取指示器组件
+          timeline: false, // 时间轴
+          navigationHelpButton: false, // 帮助提示，如何操作数字地球。
+          navigationInstructionsInitiallyVisible: false, // 如果最初应该看到导航说明，则为true；如果直到用户明确单击该按钮，则该提示不显示，否则为false。
+        });
+    
+        // 隐藏logo
+        viewer._cesiumWidget._creditContainer.style.display = "none";
+    
+ 
+        
+
+        var provider = new Cesium.WebMapServiceImageryProvider({
+        url: "https://nationalmap.gov.au/proxy/http://geoserver.nationalmap.nicta.com.au/geotopo_250k/ows",
+        layers: "Hydrography:bores",
+        parameters: {
+            transparent: true,
+            format: "image/png",
+        },
+        });
+
+        viewer.imageryLayers.addImageryProvider(provider);
+      </script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,71 @@
+<!--tag
+ 
+-->
+
+
+
+
+<!DOCTYPE html>
+
+<head>
+  <title>视图定位 flyTo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../../assets/Cesium/Cesium.js"></script>
+  <style>
+    html,
+    body,
+    #cesiumContainer {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    var viewer = new Cesium.Viewer("cesiumContainer", {
+      animation: false, // 动画小组件
+      baseLayerPicker: false, // 底图组件，选择三维数字地球的底图（imagery and terrain）。
+      fullscreenButton: false, // 全屏组件
+      vrButton: false, // VR模式
+      geocoder: false, // 地理编码（搜索）组件
+      homeButton: false, // 首页，点击之后将视图跳转到默认视角
+      infoBox: true, // 信息框
+      sceneModePicker: false, // 场景模式，切换2D、3D 和 Columbus View (CV) 模式。
+      selectionIndicator: false, //是否显示选取指示器组件
+      timeline: false, // 时间轴
+      navigationHelpButton: false, // 帮助提示，如何操作数字地球。
+      navigationInstructionsInitiallyVisible: false, // 如果最初应该看到导航说明，则为true；如果直到用户明确单击该按钮，则该提示不显示，否则为false。
+    });
+
+    // 隐藏logo
+    viewer._cesiumWidget._creditContainer.style.display = "none";
+
+    let lnglat = [113.324064, 23.111822]
+
+
+    function flyToLocation() {
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(
+          lnglat[0],
+          lnglat[1],
+          800.0  //高度
+        ),
+      });
+    }
+
+    flyToLocation()
+
+    // 加载openstreetmap  
+    let layer = new Cesium.UrlTemplateImageryProvider({
+      url: "https://tile-b.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+    });
+    viewer.imageryLayers.addImageryProvider(layer);
+
+  </script>
+</body>

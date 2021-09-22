@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<head>
+    <title>heading/pitch/roll</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <script src="../../assets/Cesium/Cesium.js"></script>
+    <style>
+        html,
+        body,
+        #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+
+        #control {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+
+    <div id="control" style="color: red;">
+        <div > heading <span id="heading"> </span> </div>
+        <input type="range" style="width:300px" id="heading" value="0" min="-180" max="180" step="1"
+            onchange="onChange(this.value , 'heading' )">
+        <div> pitch <span id="pitch"> </span> </div>
+        <input type="range" style="width:300px" id="speed" value="0" min="-180" max="180" step="1"
+            onchange="onChange(this.value , 'pitch' )">
+        <div> roll <span id="roll"> </span> </div>
+        <input type="range" style="width:300px" id="speed" value="0" min="-180" max="180" step="1"
+            onchange="onChange(this.value , 'roll' )">
+
+    </div>
+
+    <script>
+
+
+
+
+    </script>
+
+
+
+
+
+    <script type="text/javascript">
+        var view = new Cesium.Viewer('cesiumContainer', {
+            animation: false, // 动画小组件
+            baseLayerPicker: false, // 底图组件，选择三维数字地球的底图（imagery and terrain）。
+            fullscreenButton: false, // 全屏组件
+            vrButton: false, // VR模式
+            geocoder: false, // 地理编码（搜索）组件
+            homeButton: false, // 首页，点击之后将视图跳转到默认视角
+            infoBox: true, // 信息框
+            sceneModePicker: false, // 场景模式，切换2D、3D 和 Columbus View (CV) 模式。
+            selectionIndicator: false, //是否显示选取指示器组件
+            timeline: false, // 时间轴
+            navigationHelpButton: false, // 帮助提示，如何操作数字地球。
+            navigationInstructionsInitiallyVisible: false, // 如果最初应该看到导航说明，则为true；如果直到用户明确单击该按钮，则该提示不显示，否则为false。
+            // imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+            //     url: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+            // })
+        });
+
+
+        var orientation = {
+            heading: Cesium.Math.toRadians(0.0), // 方向
+            pitch: Cesium.Math.toRadians(0.0),// 倾斜角度
+            roll: Cesium.Math.toRadians(0.0)
+        }
+
+        var destination = Cesium.Cartesian3.fromDegrees(116.39518, 39.913904, 1500.0)
+
+
+        // Cartesian 方式确定位置
+        view.camera.setView({
+            destination: destination, // 设置位置
+            orientation: orientation
+        });
+
+
+        function onChange(v, id) {
+            var div = document.getElementById(id);
+            div.innerText = v
+
+            orientation[id] = Cesium.Math.toRadians(Number(v));
+
+            view.camera.setView({
+                destination: destination, // 设置位置
+                orientation: orientation
+            });
+
+
+        }
+
+
+
+
+
+
+    </script>
+</body>

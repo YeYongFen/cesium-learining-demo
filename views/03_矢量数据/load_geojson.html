@@ -11,8 +11,8 @@
 <head>
   <title>加载GEOJSON</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/assets/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <script src="/assets/Cesium/Cesium.js"></script>
+  <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../../assets/Cesium/Cesium.js"></script>
   <script src="/assets/js/event-emitter.js"></script>
 
   <style>
@@ -115,10 +115,6 @@
           entity.polygon.material = Cesium.Color.WHITE.withAlpha(.9);
           mouseEmitter.on('hover', ((entity) => function (highlightedEntity) {
             if (highlightedEntity === entity) {
-
-
-
-
               //   entity.polygon.outlineWidth = 10;
               entity.polygon.outline = false;
               entity.polyline = {

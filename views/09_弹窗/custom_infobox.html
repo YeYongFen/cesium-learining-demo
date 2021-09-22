@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>手动弹出infoBox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <script src="../../assets/Cesium/Cesium.js"></script>
+    <script src="/assets/js/cesium-event.js"></script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer" style="width:100%;height:100%;">
+    </div>
+    <script>
+        var destination = Cesium.Cartesian3.fromDegrees(116.39518, 39.913904, 1500.0)
+
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            baseLayerPicker: false,
+            selectionIndicator: false
+        });
+        viewer.camera.setView({
+            destination: destination, // 设置位置
+            orientation: {
+                heading: Cesium.Math.toRadians(20.0), // 方向
+                pitch: Cesium.Math.toRadians(-90.0),// 倾斜角度
+                roll: 0
+            }
+        });
+
+
+        var latlng = [116.39518, 39.913904]
+        var origin = Cesium.Cartesian3.fromDegrees(...latlng, 0);
+
+        var modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(origin);
+        var model = viewer.scene.primitives.add(
+            Cesium.Model.fromGltf({
+                url: "/assets/gltf/Building.gltf",
+                modelMatrix: modelMatrix,
+                minimumPixelSize: 0,
+                maximumScale: 20000,
+                minimumScale: 1,
+            })
+        );
+
+
+
+        function setInfo(lng, lat, height) {
+            viewer.entities.removeById('setInfo')
+            let entity = {
+                id: "setInfo",
+                position: Cesium.Cartesian3.fromDegrees(lng, lat),
+                label: { //文字标签
+                    text: "1",
+                    font: '1px Helvetica',// 15pt monospace
+                    scale: 0.5,
+                    fillColor: Cesium.Color.WHITE,
+                },
+            };
+            entity.description = `  lng: ${lng} <br>  lat: ${lat}   <br>    height: ${height}`;
+            viewer.entities.add(entity);
+        }
+
+        const leftDownEvent = new Cesium.Event();
+        viewer.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOWN);
+        viewer.screenSpaceEventHandler.setInputAction((event) => {
+            event = Object.assign({}, event);
+            event.type = Cesium.ScreenSpaceEventType.LEFT_DOWN;
+            event.typeName = 'left_down';
+            leftDownEvent.raiseEvent(event);
+           var earthPosition = viewer.camera.pickEllipsoid(event.position, viewer.scene.globe.ellipsoid);
+        //    var earthPosition = viewer.scene.pickPosition(event.position);
+
+        
+            // var ray = viewer.camera.getPickRay(event.position);
+            // var earthPosition = viewer.scene.globe.pick(ray, viewer.scene);
+
+
+
+            var cartographic = Cesium.Cartographic.fromCartesian(earthPosition, viewer.scene.globe.ellipsoid, new Cesium.Cartographic());
+
+
+            var lat = Cesium.Math.toDegrees(cartographic.latitude);
+            var lng = Cesium.Math.toDegrees(cartographic.longitude);
+            var height = cartographic.height;
+            console.log("[Lng=>" + lng + ",Lat=>" + lat + ",H=>" + height + "]");
+            setInfo(lng, lat, height)
+        }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!--支持从VT MAK VR-TheWorld Server服务器请求的高度地图地形图。-->
+<!DOCTYPE html>
+
+<head>
+  <title>GLTF 例子</title>
+  <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../../assets/Cesium/Cesium.js"></script>
+  <style>
+    html,
+    body,
+    #cesiumContainer {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    var viewer = new Cesium.Viewer("cesiumContainer", {
+      // shouldAnimate: true,
+    });
+    // viewer.extend(Cesium.viewerCesiumInspectorMixin);
+
+    var latlng = [116.39518, 39.913904]
+
+
+    /** Primitive方式添加gltf **********************************************************************************/
+    var origin = Cesium.Cartesian3.fromDegrees(...latlng, 0);
+    // 创建一个本地的东北向上坐标系，其原点为经度-120度，纬度44.0度。
+    // 可以随时更改模型的modelMatrix属性以移动模型。
+    var modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(origin);
+    var model = viewer.scene.primitives.add(
+      Cesium.Model.fromGltf({
+        url: "/assets/gltf/Building.gltf",
+        modelMatrix: modelMatrix,
+        minimumPixelSize: 0,
+        maximumScale: 20000,
+        minimumScale: 1,
+
+      })
+    );
+    model.readyPromise.then(function (model) {
+      // Play all animations when the model is ready to render
+      //  model.activeAnimations.addAll();
+
+      var destination = Cesium.Cartesian3.fromDegrees(...latlng, 1500.0)
+
+      viewer.camera.setView({
+        destination: destination, // 设置位置
+        orientation: {
+          heading: Cesium.Math.toRadians(20.0), // 方向
+          pitch: Cesium.Math.toRadians(-90.0),// 倾斜角度
+          roll: 0
+        }
+      });
+
+ 
+
+    });
+
+   // viewer.flyTo(origin);
+
+    /** 获取模型pick内容 **********************************************************************************/
+    var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+    handler.setInputAction(function (movement) {
+      var pick = viewer.scene.pick(movement.position);
+      if (
+        Cesium.defined(pick) &&
+        Cesium.defined(pick.node) &&
+        Cesium.defined(pick.mesh)
+      ) {
+        console.log(pick.node);
+        console.log(pick.mesh);
+      }
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+  </script>
+</body>

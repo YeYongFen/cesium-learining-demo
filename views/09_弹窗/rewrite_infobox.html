@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <title>自定义infoBox内容</title>
+  <link href="../../assets/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <script src="../../assets/Cesium/Cesium.js"></script>
+  <style>
+    html,
+    body,
+    #cesiumContainer {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    var viewer = new Cesium.Viewer("cesiumContainer");
+
+    var entity = viewer.entities.add({
+      name: "boxName",
+      position: Cesium.Cartesian3.fromDegrees(-107.0, 40.0, 300000.0),
+      box: {
+        show: true,
+        dimensions: new Cesium.Cartesian3(400000.0, 300000.0, 500000.0), // Cartesian3类型，用于指定框的长度，宽度和高度
+        // 指定距实体位置的高度是相对于什么的高度。 default: HeightReference.NONE
+        // NONE	位置绝对；CLAMP_TO_GROUND	位置固定在地形上；RELATIVE_TO_GROUND 位置高度是指地形上方的高度。
+        heightReference: Cesium.HeightReference.NONE,
+        fill: true,
+        // MaterialProperty|Color  default:Color.WHITE
+        material: Cesium.Color.RED.withAlpha(0.5),
+        outline: true,
+        // type:Property|Color  default:Color.BLACK
+        outlineColor: Cesium.Color.BLACK,
+        outlineWidth: 1.0,
+
+        // type:ShadowMode  default:ShadowMode.DISABLED
+        // DISABLED	对象不投射或接收阴影；ENABLED	对象投射并接收阴影；CAST_ONLY	对象仅投射阴影；RECEIVE_ONLY 该对象仅接收阴影。
+        shadows: Cesium.ShadowMode.DISABLED,
+        // type:DistanceDisplayCondition
+        // distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+        //   1.0e3,
+        //   2.0e3
+        // ),
+      },
+
+      description:'自定义内容<br>hahahha' 
+    });
+    viewer.zoomTo(entity);
+  </script>
+</body>
